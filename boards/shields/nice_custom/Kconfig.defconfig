@@ -1,0 +1,104 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_NICE_CUSTOM
+
+config ZMK_DISPLAY
+    default y
+
+config NICE_CUSTOM_ON
+    default y
+
+# Include common nice_oled configuration
+rsource "../nice_oled_common/Kconfig.defconfig"
+
+# Widget position coordinates for nice_custom (configurable)
+config NICE_OLED_WIDGET_LAYER_CUSTOM_X
+    int "Layer widget X position"
+    default 0
+
+config NICE_OLED_WIDGET_LAYER_CUSTOM_Y
+    int "Layer widget Y position"
+    default 146
+
+config NICE_OLED_WIDGET_BATTERY_CUSTOM_X
+    int "Battery widget X position"
+    default 0
+
+config NICE_OLED_WIDGET_BATTERY_CUSTOM_Y
+    int "Battery widget Y position"
+    default 50
+
+config NICE_OLED_WIDGET_PROFILE_CUSTOM_X
+    int "Profile widget X position"
+    default 0
+
+config NICE_OLED_WIDGET_PROFILE_CUSTOM_Y
+    int "Profile widget Y position"
+    default 137
+
+config NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X
+    int "WPM gauge X position"
+    default 0
+
+config NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y
+    int "WPM gauge Y position"
+    default 70
+
+config NICE_OLED_WIDGET_OUTPUT_USB_CUSTOM_X
+    int "Output USB icon X position"
+    default 0
+
+config NICE_OLED_WIDGET_OUTPUT_USB_CUSTOM_Y
+    int "Output USB icon Y position"
+    default 34
+
+config NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_X
+    int "Output BT icon X position"
+    default 4
+
+config NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_Y
+    int "Output BT icon Y position"
+    default 32
+
+config NICE_OLED_WIDGET_LUNA_CUSTOM_X
+    int "Luna widget X position"
+    default 100
+
+config NICE_OLED_WIDGET_LUNA_CUSTOM_Y
+    int "Luna widget Y position"
+    default 0
+
+config NICE_OLED_WIDGET_BONGO_CAT_CUSTOM_X
+    int "Bongo cat widget X position"
+    default 64
+
+config NICE_OLED_WIDGET_BONGO_CAT_CUSTOM_Y
+    int "Bongo cat widget Y position"
+    default -9
+
+config NICE_OLED_WIDGET_HID_INDICATORS_CUSTOM_X
+    int "HID indicators widget X position"
+    default 100
+
+config NICE_OLED_WIDGET_HID_INDICATORS_CUSTOM_Y
+    int "HID indicators widget Y position"
+    default 15
+
+config NICE_OLED_WIDGET_MODIFIERS_CUSTOM_X
+    int "Modifiers widget X position"
+    default 62
+
+config NICE_OLED_WIDGET_MODIFIERS_CUSTOM_Y
+    int "Modifiers widget Y position"
+    default 62
+
+config NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CUSTOM_X
+    int "Animation peripheral X position"
+    default 18
+
+config NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CUSTOM_Y
+    int "Animation peripheral Y position"
+    default -18
+
+endif # SHIELD_NICE_CUSTOM
