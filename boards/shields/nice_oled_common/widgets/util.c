@@ -12,7 +12,7 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
   static lv_color_t cbuf_tmp[CANVAS_HEIGHT * CANVAS_HEIGHT];
   memcpy(cbuf_tmp, cbuf, sizeof(cbuf_tmp));
 
-  lv_img_dsc_t img;
+  lv_image_dsc_t img;
   img.data = (void *)cbuf_tmp;
   img.header.magic = LV_IMAGE_HEADER_MAGIC;
   img.header.cf = LV_COLOR_FORMAT_NATIVE;
@@ -21,16 +21,31 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
   img.header.h = CANVAS_HEIGHT;
 
   lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-  lv_canvas_transform(canvas, &img, 900, LV_IMG_ZOOM_NONE, -1, 0,
-                      CANVAS_HEIGHT / 2, CANVAS_HEIGHT / 2, false);
+
+  lv_layer_t layer;
+  lv_canvas_init_layer(canvas, &layer);
+
+  lv_draw_image_dsc_t img_dsc;
+  lv_draw_image_dsc_init(&img_dsc);
+  img_dsc.rotation = 900; /* 90 degrees in tenths */
+  img_dsc.pivot.x = CANVAS_HEIGHT / 2;
+  img_dsc.pivot.y = CANVAS_HEIGHT / 2;
+
+  lv_area_t area = {.x1 = -1, .y1 = 0, .x2 = CANVAS_HEIGHT - 2, .y2 = CANVAS_HEIGHT - 1};
+  lv_draw_image(&layer, &img_dsc, &area, &img);
+
+  lv_canvas_finish_layer(canvas, &layer);
 }
 
 void draw_background(lv_obj_t *canvas) {
   lv_draw_rect_dsc_t rect_black_dsc;
   init_rect_dsc(&rect_black_dsc, LVGL_BACKGROUND);
 
-  lv_canvas_draw_rect(canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT,
-                      &rect_black_dsc);
+  lv_layer_t layer;
+  lv_canvas_init_layer(canvas, &layer);
+  lv_area_t area = {.x1 = 0, .y1 = 0, .x2 = CANVAS_WIDTH - 1, .y2 = CANVAS_HEIGHT - 1};
+  lv_draw_rect(&layer, &rect_black_dsc, &area);
+  lv_canvas_finish_layer(canvas, &layer);
 }
 
 void init_label_dsc(lv_draw_label_dsc_t *label_dsc, lv_color_t color,

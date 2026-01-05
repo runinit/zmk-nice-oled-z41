@@ -289,8 +289,8 @@ static const lv_img_dsc_t *mod_imgs_active[4] = {&control_white_0, &shift_white_
 static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL)
     // --- MODO SÍMBOLOS (Imágenes reales) ---
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
     // Las imágenes son 14x14 píxeles
     const int img_size = 14;

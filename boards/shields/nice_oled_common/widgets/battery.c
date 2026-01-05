@@ -71,13 +71,23 @@ static void draw_level(lv_obj_t *canvas, const struct status_state *state) {
     char text[10] = {};
 
     sprintf(text, "%i%%", state->battery);
-    // x, y, width, dsc, text
-    lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y, 42, &label_right_dsc, text);
+    label_right_dsc.text = text;
+
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+    lv_area_t area = {
+        .x1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X,
+        .y1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y,
+        .x2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 42 - 1,
+        .y2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + 16 - 1
+    };
+    lv_draw_label(&layer, &label_right_dsc, &area);
+    lv_canvas_finish_layer(canvas, &layer);
 }
 
 static void draw_charging_level(lv_obj_t *canvas, const struct status_state *state) {
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
     lv_draw_label_dsc_t label_right_dsc;
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
     init_label_dsc(&label_right_dsc, LVGL_FOREGROUND, &pixel_operator_mono_16, LV_TEXT_ALIGN_RIGHT);
@@ -86,21 +96,53 @@ static void draw_charging_level(lv_obj_t *canvas, const struct status_state *sta
 #endif // CONFIG_NICE_EPAPER_ON
 
     char text[10] = {};
-
     sprintf(text, "%i", state->battery);
-    lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y, 35, &label_right_dsc, text);
+    label_right_dsc.text = text;
+
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+
+    /* Draw battery percentage text */
+    lv_area_t text_area = {
+        .x1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X,
+        .y1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y,
+        .x2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 35 - 1,
+        .y2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + 16 - 1
+    };
+    lv_draw_label(&layer, &label_right_dsc, &text_area);
+
+    /* Draw charging bolt icon */
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
-    lv_canvas_draw_img(canvas, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 36, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + 2, &bolt, &img_dsc);
+    lv_area_t img_area = {
+        .x1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 36,
+        .y1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + 2,
+        .x2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 36 + bolt.header.w - 1,
+        .y2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + 2 + bolt.header.h - 1
+    };
 #else
-    lv_canvas_draw_img(canvas, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 25, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y, &bolt, &img_dsc);
+    lv_area_t img_area = {
+        .x1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 25,
+        .y1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y,
+        .x2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 25 + bolt.header.w - 1,
+        .y2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + bolt.header.h - 1
+    };
 #endif // CONFIG_NICE_EPAPER_ON
+    lv_draw_image(&layer, &img_dsc, &img_area, &bolt);
+
+    lv_canvas_finish_layer(canvas, &layer);
 }
 
 void draw_battery_status(lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
     lv_draw_label_dsc_t label_left_dsc;
     init_label_dsc(&label_left_dsc, LVGL_FOREGROUND, &pixel_operator_mono_16, LV_TEXT_ALIGN_LEFT);
-    lv_canvas_draw_text(canvas, 0, 19, 25, &label_left_dsc, "BAT");
+    label_left_dsc.text = "BAT";
+
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+    lv_area_t area = {.x1 = 0, .y1 = 19, .x2 = 24, .y2 = 19 + 16 - 1};
+    lv_draw_label(&layer, &label_left_dsc, &area);
+    lv_canvas_finish_layer(canvas, &layer);
 #endif // CONFIG_NICE_EPAPER_ON
     if (state->charging) {
         draw_charging_level(canvas, state);
