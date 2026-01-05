@@ -22,5 +22,16 @@ void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RESPONSIVE_BONGO_CAT)
     lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
 #endif
-    lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y, 68, &label_dsc, text);
+    label_dsc.text = text;
+
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+    lv_area_t area = {
+        .x1 = CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X,
+        .y1 = CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y,
+        .x2 = CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X + 67,
+        .y2 = CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y + 15
+    };
+    lv_draw_label(&layer, &label_dsc, &area);
+    lv_canvas_finish_layer(canvas, &layer);
 }

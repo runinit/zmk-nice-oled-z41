@@ -61,6 +61,14 @@ config NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_Y
     int "Output BT icon Y position"
     default 32
 
+config NICE_OLED_WIDGET_OUTPUT_BT_UNBONDED_CUSTOM_X
+    int "Output BT unbonded icon X position"
+    default -1
+
+config NICE_OLED_WIDGET_OUTPUT_BT_UNBONDED_CUSTOM_Y
+    int "Output BT unbonded icon Y position"
+    default 32
+
 config NICE_OLED_WIDGET_LUNA_CUSTOM_X
     int "Luna widget X position"
     default 100
