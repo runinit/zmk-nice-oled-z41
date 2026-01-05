@@ -9,7 +9,7 @@
 struct zmk_widget_screen {
     sys_snode_t node;
     lv_obj_t *obj;
-    lv_color_t cbuf[CANVAS_HEIGHT * CANVAS_HEIGHT];
+    uint8_t cbuf[CANVAS_BUF_SIZE];  // Fixed for LVGL 9: use uint8_t, not lv_color_t
     struct status_state state;
 };
 

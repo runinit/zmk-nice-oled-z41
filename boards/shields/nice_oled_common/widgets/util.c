@@ -8,17 +8,17 @@ void to_uppercase(char *str) {
   }
 }
 
-void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
-  static lv_color_t cbuf_tmp[CANVAS_HEIGHT * CANVAS_HEIGHT];
+void rotate_canvas(lv_obj_t *canvas, uint8_t cbuf[]) {
+  static uint8_t cbuf_tmp[CANVAS_BUF_SIZE];  // Fixed for LVGL 9: use uint8_t, not lv_color_t
   memcpy(cbuf_tmp, cbuf, sizeof(cbuf_tmp));
 
   lv_image_dsc_t img;
   img.data = (void *)cbuf_tmp;
   img.header.magic = LV_IMAGE_HEADER_MAGIC;
-  img.header.cf = LV_COLOR_FORMAT_NATIVE;
+  img.header.cf = CANVAS_COLOR_FORMAT;  // Use consistent color format
   img.header.flags = 0;
-  img.header.w = CANVAS_HEIGHT;
-  img.header.h = CANVAS_HEIGHT;
+  img.header.w = CANVAS_SIZE;
+  img.header.h = CANVAS_SIZE;
 
   lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
 
@@ -29,10 +29,10 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
   lv_draw_image_dsc_init(&img_dsc);
   img_dsc.src = &img;
   img_dsc.rotation = 900; /* 90 degrees in tenths */
-  img_dsc.pivot.x = CANVAS_HEIGHT / 2;
-  img_dsc.pivot.y = CANVAS_HEIGHT / 2;
+  img_dsc.pivot.x = CANVAS_SIZE / 2;
+  img_dsc.pivot.y = CANVAS_SIZE / 2;
 
-  lv_area_t area = {.x1 = -1, .y1 = 0, .x2 = CANVAS_HEIGHT - 2, .y2 = CANVAS_HEIGHT - 1};
+  lv_area_t area = {.x1 = -1, .y1 = 0, .x2 = CANVAS_SIZE - 2, .y2 = CANVAS_SIZE - 1};
   lv_draw_image(&layer, &img_dsc, &area);
 
   lv_canvas_finish_layer(canvas, &layer);
