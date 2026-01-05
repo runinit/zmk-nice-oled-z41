@@ -112,6 +112,7 @@ static void draw_charging_level(lv_obj_t *canvas, const struct status_state *sta
     lv_draw_label(&layer, &label_right_dsc, &text_area);
 
     /* Draw charging bolt icon */
+    img_dsc.src = &bolt;
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
     lv_area_t img_area = {
         .x1 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X + 36,
@@ -127,7 +128,7 @@ static void draw_charging_level(lv_obj_t *canvas, const struct status_state *sta
         .y2 = CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y + bolt.header.h - 1
     };
 #endif // CONFIG_NICE_EPAPER_ON
-    lv_draw_image(&layer, &img_dsc, &img_area, &bolt);
+    lv_draw_image(&layer, &img_dsc, &img_area);
 
     lv_canvas_finish_layer(canvas, &layer);
 }

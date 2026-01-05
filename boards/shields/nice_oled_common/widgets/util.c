@@ -27,12 +27,13 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
 
   lv_draw_image_dsc_t img_dsc;
   lv_draw_image_dsc_init(&img_dsc);
+  img_dsc.src = &img;
   img_dsc.rotation = 900; /* 90 degrees in tenths */
   img_dsc.pivot.x = CANVAS_HEIGHT / 2;
   img_dsc.pivot.y = CANVAS_HEIGHT / 2;
 
   lv_area_t area = {.x1 = -1, .y1 = 0, .x2 = CANVAS_HEIGHT - 2, .y2 = CANVAS_HEIGHT - 1};
-  lv_draw_image(&layer, &img_dsc, &area, &img);
+  lv_draw_image(&layer, &img_dsc, &area);
 
   lv_canvas_finish_layer(canvas, &layer);
 }

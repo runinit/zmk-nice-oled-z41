@@ -12,6 +12,7 @@ LV_IMG_DECLARE(usb);
 static void draw_usb_connected(lv_obj_t *canvas) {
     lv_draw_image_dsc_t img_dsc;
     lv_draw_image_dsc_init(&img_dsc);
+    img_dsc.src = &usb;
 
     lv_layer_t layer;
     lv_canvas_init_layer(canvas, &layer);
@@ -21,13 +22,14 @@ static void draw_usb_connected(lv_obj_t *canvas) {
         .x2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_USB_CUSTOM_X + usb.header.w - 1,
         .y2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_USB_CUSTOM_Y + usb.header.h - 1
     };
-    lv_draw_image(&layer, &img_dsc, &area, &usb);
+    lv_draw_image(&layer, &img_dsc, &area);
     lv_canvas_finish_layer(canvas, &layer);
 }
 
 static void draw_ble_unbonded(lv_obj_t *canvas) {
     lv_draw_image_dsc_t img_dsc;
     lv_draw_image_dsc_init(&img_dsc);
+    img_dsc.src = &bt_unbonded;
 
     lv_layer_t layer;
     lv_canvas_init_layer(canvas, &layer);
@@ -37,7 +39,7 @@ static void draw_ble_unbonded(lv_obj_t *canvas) {
         .x2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_UNBONDED_CUSTOM_X + bt_unbonded.header.w - 1,
         .y2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_UNBONDED_CUSTOM_Y + bt_unbonded.header.h - 1
     };
-    lv_draw_image(&layer, &img_dsc, &area, &bt_unbonded);
+    lv_draw_image(&layer, &img_dsc, &area);
     lv_canvas_finish_layer(canvas, &layer);
 }
 #endif
@@ -45,6 +47,7 @@ static void draw_ble_unbonded(lv_obj_t *canvas) {
 static void draw_ble_disconnected(lv_obj_t *canvas) {
     lv_draw_image_dsc_t img_dsc;
     lv_draw_image_dsc_init(&img_dsc);
+    img_dsc.src = &bt_no_signal;
 
     lv_layer_t layer;
     lv_canvas_init_layer(canvas, &layer);
@@ -54,13 +57,14 @@ static void draw_ble_disconnected(lv_obj_t *canvas) {
         .x2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_X + bt_no_signal.header.w - 1,
         .y2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_Y + bt_no_signal.header.h - 1
     };
-    lv_draw_image(&layer, &img_dsc, &area, &bt_no_signal);
+    lv_draw_image(&layer, &img_dsc, &area);
     lv_canvas_finish_layer(canvas, &layer);
 }
 
 static void draw_ble_connected(lv_obj_t *canvas) {
     lv_draw_image_dsc_t img_dsc;
     lv_draw_image_dsc_init(&img_dsc);
+    img_dsc.src = &bt;
 
     lv_layer_t layer;
     lv_canvas_init_layer(canvas, &layer);
@@ -70,7 +74,7 @@ static void draw_ble_connected(lv_obj_t *canvas) {
         .x2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_X + bt.header.w - 1,
         .y2 = CONFIG_NICE_OLED_WIDGET_OUTPUT_BT_CUSTOM_Y + bt.header.h - 1
     };
-    lv_draw_image(&layer, &img_dsc, &area, &bt);
+    lv_draw_image(&layer, &img_dsc, &area);
     lv_canvas_finish_layer(canvas, &layer);
 }
 
