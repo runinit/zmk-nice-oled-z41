@@ -53,11 +53,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_FAST_IMG1
 };
 
 const lv_img_dsc_t fast_img1 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = fast_img1_map,
 };
 
@@ -110,11 +112,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_FAST_IMG2
 };
 
 const lv_img_dsc_t fast_img2 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = fast_img2_map,
 };
 
@@ -167,11 +171,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_IDLE_IMG1
 };
 
 const lv_img_dsc_t idle_img1 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = idle_img1_map,
 };
 
@@ -224,11 +230,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_IDLE_IMG2
 };
 
 const lv_img_dsc_t idle_img2 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = idle_img2_map,
 };
 
@@ -281,11 +289,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_IDLE_IMG3
 };
 
 const lv_img_dsc_t idle_img3 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = idle_img3_map,
 };
 
@@ -338,11 +348,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_IDLE_IMG4
 };
 
 const lv_img_dsc_t idle_img4 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = idle_img4_map,
 };
 
@@ -395,11 +407,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_IDLE_IMG5
 };
 
 const lv_img_dsc_t idle_img5 = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = idle_img5_map,
 };
 
@@ -453,10 +467,12 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SLOW_IMG 
 };
 
 const lv_img_dsc_t slow_img = {
-    .header.always_zero = 0,
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
+    .header.flags = 0,
+    
     .data = slow_img_map,
 };

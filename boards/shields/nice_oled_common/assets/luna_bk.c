@@ -779,9 +779,9 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_DOG_BARK2
 
 /* Descriptor: Dog Sit1 */
 const lv_img_dsc_t dog_sit1 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32, /* Ancho de la imagen */
     .header.h = 22, /* Alto de la imagen */
     .data_size = sizeof(dog_sit1_map),
@@ -790,9 +790,9 @@ const lv_img_dsc_t dog_sit1 = {
 
 /* Descriptor: Dog Sit2 */
 const lv_img_dsc_t dog_sit2 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_sit2_map),
@@ -801,9 +801,9 @@ const lv_img_dsc_t dog_sit2 = {
 
 /* Descriptor: Dog Walk1 */
 const lv_img_dsc_t dog_walk1 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_walk1_map),
@@ -812,9 +812,9 @@ const lv_img_dsc_t dog_walk1 = {
 
 /* Descriptor: Dog Walk2 */
 const lv_img_dsc_t dog_walk2 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_walk2_map),
@@ -823,9 +823,9 @@ const lv_img_dsc_t dog_walk2 = {
 
 /* Descriptor: Dog Run1 */
 const lv_img_dsc_t dog_run1 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_run1_map),
@@ -834,9 +834,9 @@ const lv_img_dsc_t dog_run1 = {
 
 /* Descriptor: Dog Run2 */
 const lv_img_dsc_t dog_run2 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_run2_map),
@@ -845,9 +845,9 @@ const lv_img_dsc_t dog_run2 = {
 
 /* Descriptor: Dog Bark1 */
 const lv_img_dsc_t dog_bark1 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_bark1_map),
@@ -856,9 +856,9 @@ const lv_img_dsc_t dog_bark1 = {
 
 /* Descriptor: Dog Bark2 */
 const lv_img_dsc_t dog_bark2 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_bark2_map),
@@ -867,9 +867,9 @@ const lv_img_dsc_t dog_bark2 = {
 
 /* Descriptor: Dog Sneak1 */
 const lv_img_dsc_t dog_sneak1 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_sneak1_map),
@@ -878,9 +878,9 @@ const lv_img_dsc_t dog_sneak1 = {
 
 /* Descriptor: Dog Sneak2 */
 const lv_img_dsc_t dog_sneak2 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 32,
     .header.h = 22,
     .data_size = sizeof(dog_sneak2_map),
@@ -889,9 +889,9 @@ const lv_img_dsc_t dog_sneak2 = {
 
 /* Descriptor: Dog Bark1_90 */
 const lv_img_dsc_t dog_bark1_90 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 24,
     .header.h = 32,
     .data_size = sizeof(dog_bark1_map_90),
@@ -900,9 +900,9 @@ const lv_img_dsc_t dog_bark1_90 = {
 
 /* Descriptor: Dog Bark2_90 */
 const lv_img_dsc_t dog_bark2_90 = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 24,
     .header.h = 32,
     .data_size = sizeof(dog_bark2_map_90),

@@ -40,9 +40,9 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BATTERY u
 };
 
 const lv_img_dsc_t battery = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_I1,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 68,
     .header.h = 31,
     .data_size = 287,
