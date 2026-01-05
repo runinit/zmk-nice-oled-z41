@@ -213,7 +213,7 @@ static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 //  Declaración adelantada (Forward Declaration) para draw_canvas
-static void draw_canvas(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state);
+static void draw_canvas(lv_obj_t *widget, uint8_t cbuf[], const struct status_state *state);
 //  Fin Declaración adelantada
 
 /**
@@ -986,7 +986,7 @@ static struct zmk_widget_hid_indicators hid_indicators_widget;
  * Draw canvas
  **/
 
-static void draw_canvas(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
+static void draw_canvas(lv_obj_t *widget, uint8_t cbuf[], const struct status_state *state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, 0);
 
     // Draw widgets
