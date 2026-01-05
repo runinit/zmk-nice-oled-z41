@@ -73,7 +73,8 @@ config ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
 
 config NICE_OLED_WIDGET_STATUS
     bool "Custom nice oled status widget"
-    default y
+    depends on ZMK_DISPLAY
+    default y if ZMK_DISPLAY
     select LV_USE_LABEL
     select LV_USE_IMG
     select LV_USE_CANVAS
