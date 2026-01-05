@@ -21,7 +21,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BOLT uint
 };
 
 const lv_img_dsc_t bolt = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 5,
@@ -60,7 +60,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BT uint8_
 };
 
 const lv_img_dsc_t bt = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 12,
@@ -98,7 +98,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BT_NO_SIG
 };
 
 const lv_img_dsc_t bt_no_signal = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 12,
@@ -141,7 +141,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BT_UNBOND
 };
 
 const lv_img_dsc_t bt_unbonded = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 22,
@@ -178,7 +178,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_USB uint8
 };
 
 const lv_img_dsc_t usb = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 20,
@@ -207,7 +207,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_GAUGE uin
 };
 
 const lv_img_dsc_t gauge = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 33,
@@ -251,7 +251,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_GRID uint
 };
 
 const lv_img_dsc_t grid = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 67,
@@ -278,7 +278,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_PROFILES 
 };
 
 const lv_img_dsc_t profiles = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 31,

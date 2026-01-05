@@ -281,7 +281,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SLEEP_VIE
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 const lv_img_dsc_t sleep_view = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .header.always_zero = 0,
     .header.reserved = 0,
     .header.w = 140,
@@ -381,6 +381,6 @@ const lv_img_dsc_t sleep_oled = {
     .header.w = 128,
     .header.h = 32,
     .data_size = 520,
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
+    .header.cf = LV_COLOR_FORMAT_I1,
     .data = sleep_oled_map,
 };
