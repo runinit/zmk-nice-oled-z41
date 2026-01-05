@@ -11,7 +11,7 @@
 // In LVGL 9, lv_color_t is always 3 bytes (RGB888), so we use uint8_t buffers
 // with proper size calculation using LVGL macros
 #define CANVAS_SIZE CANVAS_HEIGHT
-#define CANVAS_COLOR_FORMAT LV_COLOR_FORMAT_L8  // 8-bit grayscale (1 byte per pixel)
+#define CANVAS_COLOR_FORMAT LV_COLOR_FORMAT_I1  // 1-bit indexed (monochrome, 8 pixels per byte)
 #define CANVAS_BUF_SIZE LV_CANVAS_BUF_SIZE(CANVAS_SIZE, CANVAS_SIZE, \
     LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), LV_DRAW_BUF_STRIDE_ALIGN)
 
