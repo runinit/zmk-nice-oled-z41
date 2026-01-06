@@ -18,9 +18,9 @@ void rotate_canvas(lv_obj_t *canvas) {
     const uint32_t stride = lv_draw_buf_width_to_stride(CANVAS_SIZE, CANVAS_COLOR_FORMAT);
 
     // Use lv_draw_sw_rotate - the correct LVGL 9 rotation API
-    // 90° rotation for vertical 68x160 display
+    // 270° rotation matching ZMK's nice_view exactly
     lv_draw_sw_rotate(buf_copy, buf, CANVAS_SIZE, CANVAS_SIZE, stride, stride,
-                      LV_DISPLAY_ROTATION_90, CANVAS_COLOR_FORMAT);
+                      LV_DISPLAY_ROTATION_270, CANVAS_COLOR_FORMAT);
 }
 
 void draw_background(lv_obj_t *canvas) {

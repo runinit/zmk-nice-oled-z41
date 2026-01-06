@@ -8,9 +8,9 @@
 #define CANVAS_HEIGHT CONFIG_NICE_OLED_CUSTOM_CANVAS_HEIGHT
 
 // Canvas buffer size calculation for LVGL 9
-// Square canvas sized to display height for rotation (68x160 display rotated)
+// Fixed 68x68 square canvas matching ZMK's nice_view exactly
 // Using L8 format (smallest supported by lv_draw_sw_rotate)
-#define CANVAS_SIZE CANVAS_HEIGHT
+#define CANVAS_SIZE 68
 #define CANVAS_COLOR_FORMAT LV_COLOR_FORMAT_L8  // 8-bit grayscale - smallest type supported by rotation
 #define CANVAS_BUF_SIZE LV_CANVAS_BUF_SIZE(CANVAS_SIZE, CANVAS_SIZE, \
     LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), LV_DRAW_BUF_STRIDE_ALIGN)
