@@ -8,9 +8,9 @@
 #define CANVAS_HEIGHT CONFIG_NICE_OLED_CUSTOM_CANVAS_HEIGHT
 
 // Canvas buffer size calculation for LVGL 9
-// In LVGL 9, lv_color_t is always 3 bytes (RGB888), so we use uint8_t buffers
-// with proper size calculation using LVGL macros
-#define CANVAS_SIZE CANVAS_HEIGHT
+// Fixed 68x68 square canvas like ZMK's native nice_view
+// Using L8 format (smallest supported by lv_draw_sw_rotate)
+#define CANVAS_SIZE 68
 #define CANVAS_COLOR_FORMAT LV_COLOR_FORMAT_L8  // 8-bit grayscale - smallest type supported by rotation
 #define CANVAS_BUF_SIZE LV_CANVAS_BUF_SIZE(CANVAS_SIZE, CANVAS_SIZE, \
     LV_COLOR_FORMAT_GET_BPP(CANVAS_COLOR_FORMAT), LV_DRAW_BUF_STRIDE_ALIGN)
@@ -71,7 +71,7 @@ struct status_state {
 };
 
 void to_uppercase(char *str);
-void rotate_canvas(lv_obj_t *canvas, uint8_t cbuf[]);
+void rotate_canvas(lv_obj_t *canvas);
 void draw_background(lv_obj_t *canvas);
 void init_rect_dsc(lv_draw_rect_dsc_t *rect_dsc, lv_color_t bg_color);
 void init_line_dsc(lv_draw_line_dsc_t *line_dsc, lv_color_t color, uint8_t width);

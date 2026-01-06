@@ -8,34 +8,19 @@ void to_uppercase(char *str) {
   }
 }
 
-void rotate_canvas(lv_obj_t *canvas, uint8_t cbuf[]) {
-  static uint8_t cbuf_tmp[CANVAS_BUF_SIZE];  // Fixed for LVGL 9: use uint8_t, not lv_color_t
-  memcpy(cbuf_tmp, cbuf, sizeof(cbuf_tmp));
+void rotate_canvas(lv_obj_t *canvas) {
+    // Get the canvas buffer directly from the canvas object (LVGL 9 approach)
+    uint8_t *buf = lv_canvas_get_draw_buf(canvas)->data;
+    static uint8_t buf_copy[CANVAS_BUF_SIZE];
+    memcpy(buf_copy, buf, sizeof(buf_copy));
 
-  lv_image_dsc_t img;
-  img.data = (void *)cbuf_tmp;
-  img.header.magic = LV_IMAGE_HEADER_MAGIC;
-  img.header.cf = CANVAS_COLOR_FORMAT;  // Use consistent color format
-  img.header.flags = 0;
-  img.header.w = CANVAS_SIZE;
-  img.header.h = CANVAS_SIZE;
+    // Calculate stride for proper buffer rotation
+    const uint32_t stride = lv_draw_buf_width_to_stride(CANVAS_SIZE, CANVAS_COLOR_FORMAT);
 
-  lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-
-  lv_layer_t layer;
-  lv_canvas_init_layer(canvas, &layer);
-
-  lv_draw_image_dsc_t img_dsc;
-  lv_draw_image_dsc_init(&img_dsc);
-  img_dsc.src = &img;
-  img_dsc.rotation = 900; /* 90 degrees in tenths */
-  img_dsc.pivot.x = CANVAS_SIZE / 2;
-  img_dsc.pivot.y = CANVAS_SIZE / 2;
-
-  lv_area_t area = {.x1 = -1, .y1 = 0, .x2 = CANVAS_SIZE - 2, .y2 = CANVAS_SIZE - 1};
-  lv_draw_image(&layer, &img_dsc, &area);
-
-  lv_canvas_finish_layer(canvas, &layer);
+    // Use lv_draw_sw_rotate - the correct LVGL 9 rotation API
+    // This matches ZMK's native nice_view implementation
+    lv_draw_sw_rotate(buf_copy, buf, CANVAS_SIZE, CANVAS_SIZE, stride, stride,
+                      LV_DISPLAY_ROTATION_270, CANVAS_COLOR_FORMAT);
 }
 
 void draw_background(lv_obj_t *canvas) {

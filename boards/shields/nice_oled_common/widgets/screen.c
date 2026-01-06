@@ -1023,7 +1023,7 @@ static void draw_canvas(lv_obj_t *widget, uint8_t cbuf[], const struct status_st
 #endif // <-- NUEVO
 
     // Rotate for horizontal display
-    rotate_canvas(canvas, cbuf);
+    rotate_canvas(canvas);
 }
 
 /**
